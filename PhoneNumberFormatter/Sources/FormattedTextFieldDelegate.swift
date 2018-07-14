@@ -46,6 +46,8 @@ final class FormattedTextFieldDelegate: NSObject, UITextFieldDelegate {
         self.textDidChangeBlock?(textField)
         textField.sendActions(for: .valueChanged)
 
+        _ = userDelegate?.textField?(textField, shouldChangeCharactersIn: range, replacementString: string)
+
         if hasPredictiveInput == true && (textField.text == nil || textField.text == "") && string == " " {
             return true
         } else {
